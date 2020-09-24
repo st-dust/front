@@ -10,38 +10,14 @@ import javax.persistence.EntityNotFoundException;
 @Service
 public class GetInfoService implements InfoService {
 
+    private final UsersRepository userRepository;
+
     @Autowired
-    private UsersRepository userRepository;
-
-    public String getPersonalNumber(int id) {
-        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new).getPersonalNumber();
+    public GetInfoService(UsersRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public String getName(int id) {
-        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new).getName();
-    }
-
-    public String getSurname(int id) {
-        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new).getSurname();
-    }
-
-    public String getDepartment(int id) {
-        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new).getDepartment();
-
-    }
-
-    public String getDepartmentID(int id) {
-        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new).getDepartmentID();
-    }
-
-    public User getWholeUser(int id) {
-        User user = new User();
-        user.setId(id);
-        user.setPersonalNumber(getPersonalNumber(id));
-        user.setName(getName(id));
-        user.setSurname(getSurname(id));
-        user.setDepartment(getDepartment(id));
-        user.setDepartmentID(getDepartmentID(id));
-        return user;
+    public User getUserById(int id) {
+        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }

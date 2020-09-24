@@ -74,7 +74,7 @@ public class MainView extends VerticalLayout {
                         try {
                             int textFieldIntValue = id.get();
 
-                            User user = service.getWholeUser(textFieldIntValue);
+                            User user = service.getUserById(textFieldIntValue);
                             grid.setItems(user);
 
                             successMessage.setValue(user.getName() + " " + user.getSurname() + " je zaměstnan/a v ZCG");
