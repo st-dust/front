@@ -1,7 +1,7 @@
 
 .centered-content {
   margin: 10% auto;
-  max-width: 40%;
+  max-width: 60%;
 }
 
 .centered-content-button-textfield {
@@ -10,11 +10,16 @@
 }
 
 .success-message {
+  text-align-last: center;
+  pointer-events: none;
   font-size: 140%;
+  font-weight: bolder;
   border-radius: 5px;
-  background: #519613;
-  margin: 1% auto;
+  background: #0294A5;
+  color: #16235A;
+  margin: 1%;
   width: 98%;
+  padding: initial;
 }
 
 .v-grid {
