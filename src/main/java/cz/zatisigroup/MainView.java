@@ -49,7 +49,6 @@ public class MainView extends VerticalLayout {
         textField.setAutofocus(true);
 
         textField.setPlaceholder("Sem vložte ID");
-//        textField.setAutoselect(true);
         textField.setClearButtonVisible(true);
 
         Details details = new Details();
@@ -74,8 +73,7 @@ public class MainView extends VerticalLayout {
 
         Button button = new Button("Ověřit ID",
                 (e -> {
-                    remove(details, successMessage);
-                    details.setContent(null);
+                    remove(grid, successMessage);
 
                     Optional<Integer> id = getNumber(textField.getValue());
                     if(id.isPresent()) {
