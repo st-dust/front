@@ -1,9 +1,14 @@
 package cz.zatisigroup;
 
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.charts.model.Background;
+import com.vaadin.flow.component.details.Details;
+import com.vaadin.flow.component.details.DetailsVariant;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextAreaVariant;
 import com.vaadin.flow.theme.Theme;
@@ -47,6 +52,8 @@ public class MainView extends VerticalLayout {
 //        textField.setAutoselect(true);
         textField.setClearButtonVisible(true);
 
+        Details details = new Details();
+
         Grid<User> grid = new Grid<>();
         TextArea successMessage = new TextArea();
         successMessage.setClassName("success-message");
@@ -67,7 +74,8 @@ public class MainView extends VerticalLayout {
 
         Button button = new Button("Ověřit ID",
                 (e -> {
-                    remove(grid, successMessage);
+                    remove(details, successMessage);
+                    details.setContent(null);
 
                     Optional<Integer> id = getNumber(textField.getValue());
                     if(id.isPresent()) {
